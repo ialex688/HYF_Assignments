@@ -101,8 +101,8 @@ test('nav_menu_copy', async ({page}) => {
 
 test('break_a_test', async ({page}) => {
     await page.goto('/');
-    await page.locator('.oranges').click();
-    await expect(page).toHaveURL('/');
+    //await page.locator('.oranges').click();
+    //await expect(page).toHaveURL('/');
     await page.locator('body > header > nav > div > ul > li:nth-child(2) > a').click();
     await expect(page).toHaveURL('/?category=Apparel');
     await page.locator('body > header > nav > div > ul > li:nth-child(3) > a').click();

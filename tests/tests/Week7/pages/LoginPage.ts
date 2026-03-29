@@ -12,10 +12,7 @@ export class LoginPage {
 
     constructor(page: Page) {
         this.page = page;
-        //this.usernameInput = page.locator('#loginFrm_loginname');
         this.usernameInput = page.getByLabel("Login name");
-
-        //this.passwordInput = page.locator('#loginFrm_password');
         this.passwordInput = page.getByLabel("Password");
         this.loginButton = page.getByRole('button', { name: 'Login' });
         this.loginOrRegister = page.getByRole("link", { name: 'Login or register' });

@@ -2,12 +2,14 @@
 import { test as base } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { HomePage } from '../pages/HomePage';
+import { ProductsPage } from '../pages/ProductsPage';
 
 // Step B: Define the types for your fixtures
 // This tells TypeScript what fixtures are available
 type MyFixtures = {
   loginPage: LoginPage;
   homePage: HomePage;
+  productsPage: ProductsPage;
 };
 
 // Step C: Extend the base test with your fixtures
@@ -31,6 +33,13 @@ export const test = base.extend<MyFixtures>({
     await homePage.goto();
     await use(homePage);
   },
+
+  productsPage: async ({ page }, use) => {
+    const productsPage = new ProductsPage(page);
+    await productsPage.goto();
+    await productsPage.waitForProductCards();
+    await use(productsPage);
+  }
 });
 
 // Re-export expect so tests only need one import

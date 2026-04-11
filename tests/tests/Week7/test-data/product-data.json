@@ -1,0 +1,42 @@
+[
+  {
+    "name": "Skinsheen Bronzer Stick",
+    "category": "Makeup",
+    "price": "$29.50"
+  },
+  {
+    "name": "BeneFit Girl Meets Pearl",
+    "category": "Makeup",
+    "price": "$19.00"
+  },
+  {
+    "name": "Absolute Anti-Age Spot Replenishing Unifying Treatment",
+    "category": "Skincare",
+    "price": "$42.00"
+  },
+  {
+    "name": "Casual 3/4 Sleeve Baseball T-Shirt",
+    "category": "Apparel",
+    "price": "$14.00"
+  },
+  {
+    "name": "Designer Men Casual Formal Double Cuffs Grandad Shirt",
+    "category": "Men",
+    "price": "$26.00"
+  },
+  {
+    "name": "ck IN2U Eau De Toilette Spray",
+    "category": "Fragrance",
+    "price": "$36.00"
+  },
+  {
+    "name": "Curls to Straight Shampoo",
+    "category": "Hair Care",
+    "price": "$12.00"
+  },
+  {
+    "name": "The Catcher in the Rye",
+    "category": "Books",
+    "price": "$8.50"
+  }
+]

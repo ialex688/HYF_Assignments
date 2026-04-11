@@ -5,55 +5,52 @@ export class ProductsPage {
   readonly productDetailsName: Locator;
   readonly productDetailsCategory: Locator;
   readonly productDetailsPrice: Locator;
+  readonly addToCartButton: Locator;
+  readonly backToStoreLink: Locator;
 
   constructor(page: Page) {
     this.page = page;
     this.productDetailsName = page.locator('.product-detail-info h1');
     this.productDetailsCategory = page.locator('.product-detail-info span');
     this.productDetailsPrice = page.locator('.product-detail-price');
+    this.addToCartButton  = page.getByRole('button', { name: /add to cart/i });
+    this.backToStoreLink  = page.getByRole('link', { name: /back to store/i });
   }
 
   async goto() {
     await this.page.goto('/');
   }
 
-  productCard(index: number): Locator {
+  private productCard(index: number): Locator {
     return this.page.locator('.product-card').nth(index);
   }
 
-  productName(index: number): Locator {
-    return this.productCard(index).locator('.product-name');
-  }
-
-  productCategory(index: number): Locator {
-    return this.productCard(index).locator('.product-category');
-  }
-
-  productPrice(index: number): Locator {
-    return this.productCard(index).locator('.product-price');
-  }
-
-  productLink(index: number): Locator {
-    return this.productCard(index).locator('.product-link');
+  async getProductCount(): Promise<number> {
+    return this.page.locator('.product-card').count();
   }
 
   async getProductName(index: number): Promise<string> {
-    return this.productName(index).innerText();
+    return this.productCard(index).locator('.product-name').innerText();
   }
 
   async getProductCategory(index: number): Promise<string> {
-    return this.productCategory(index).innerText();
+    return this.productCard(index).locator('.product-category').innerText();
   }
 
   async getProductPrice(index: number): Promise<string> {
-    return this.productPrice(index).innerText();
+    return this.productCard(index).locator('.product-price').innerText();
   }
 
   async getProductUrl(index: number): Promise<string | null> {
-    return this.productLink(index).getAttribute('href');
+    return this.productCard(index).locator('.product-link').getAttribute('href');
+    
   }
 
   async clickProduct(index: number) {
-    await this.productLink(index).click();
+    await this.productCard(index).locator('.product-link').click();
   }
+
+  async waitForProductCards(): Promise<void> {
+    await this.page.locator('.product-card').first().waitFor({ state: 'visible' });
+}
 }

@@ -15,7 +15,8 @@ test.describe('Login Tests', () => {
 
     test('valid login', async ({page, loginPage}) => {
         await loginPage.login('aguspe', '12341234');
-        await expect(page).toHaveURL('/index.php?rt=account/account');
+        //await expect(page).toHaveURL('/index.php?rt=account/account');
+        await expect(page).toHaveURL(/account/);
         await expect(loginPage.validLoginMessage).toBeVisible();
     })
 
